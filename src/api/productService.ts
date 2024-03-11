@@ -6,7 +6,6 @@ export const getAllProducts = () => {
         method: 'get',
         url: import.meta.env.VITE_API_URL + '/product',
     }).then((response) => {
-        console.log("all products ==> ", response.data);
         return response.data;
     });
 }
@@ -33,7 +32,6 @@ export const createProduct = async (product: any) => {
                 path: image.path.split("\\")[1]
             });
         });
-        console.log("images ==> ", images);
         product.images = images;
     } else {
         console.error("file upload failed : ", response.status);
@@ -45,7 +43,6 @@ export const createProduct = async (product: any) => {
         url: import.meta.env.VITE_API_URL + '/product',
         data: product
     }).then((response) => {
-        console.log("product created succesfully")
         return response.data;
     });
 }

@@ -41,3 +41,18 @@
 .read-the-docs {
   color: #888;
 }
+
+.content-wrapper {
+  display: grid;
+}
+
+.content-container {
+  justify-self: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.tableHead {
+  color: #001EB9 !important;
+  font-weight: 800 !important;
+}

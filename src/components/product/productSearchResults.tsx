@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const ProductSearchResults = () => {
+const ProductSearchResults: React.FC = () => {
     return (
         <div>ProductSearchResults</div>
     )
 }
+
+export default ProductSearchResults;

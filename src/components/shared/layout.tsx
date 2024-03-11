@@ -7,12 +7,14 @@ type LayoutProps = {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div className="content">
+        <div>
             <div>
                 <Navbar />
             </div>
-            <div style={{ padding: "20px" }}>
-                {children}
+            <div className="content-wrapper" style={{ marginTop: "40px" }}>
+                <div className="content-container">
+                    {children}
+                </div>
             </div>
         </div>
     )

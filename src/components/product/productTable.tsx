@@ -23,15 +23,15 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
         console.log("delete clicked", product);
     }
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ marginTop: "20px" }}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
-                        <TableCell>SKU</TableCell>
-                        <TableCell align="right">Image</TableCell>
-                        <TableCell align="right">Product Name</TableCell>
-                        <TableCell align="right">Quantity</TableCell>
-                        <TableCell align="right"></TableCell>
+                    <TableRow >
+                        <TableCell className="tableHead">SKU</TableCell>
+                        <TableCell className="tableHead" align="right">Image</TableCell>
+                        <TableCell className="tableHead" align="left" style={{ paddingLeft: "80px" }}>Product Name</TableCell>
+                        <TableCell className="tableHead" align="center">Quantity</TableCell>
+                        <TableCell className="tableHead" align="right"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -47,7 +47,7 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
                                             key={image.fileName}
                                             width="60"
                                             height="60"
-                                            style={{ padding: '2px' }}
+                                            style={{ padding: '2px', borderRadius: '10px' }}
                                             src={`http://localhost:3000/${image.fileName}`}
                                             alt="Product Image"
                                         />
@@ -56,16 +56,16 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
                                     'No Images'
                                 )}
                             </TableCell>
-                            <TableCell align="right">{product.name}</TableCell>
-                            <TableCell align="right">{product.quantity}</TableCell>
-                            <TableCell align="right">
-                                <IconButton onClick={() => onEditClick(product)}>
-                                    <EditIcon />
-                                </IconButton>
-                                <IconButton onClick={() => onDeleteClick(product)}>
+                            <TableCell align="left" style={{ paddingLeft: "80px" }}>{product.name}</TableCell>
+                            <TableCell align="center">{product.quantity}</TableCell>
+                            <TableCell align="right" >
+                                <IconButton onClick={() => onDeleteClick(product)} style={{ color: "#001EB9" }}>
                                     <DeleteIcon />
                                 </IconButton>
-                                <IconButton onClick={() => onFavouriteClick(product)}>{product.isFavourite ? <StarIcon /> : <StarBorderIcon />}</IconButton>
+                                <IconButton onClick={() => onEditClick(product)} style={{ color: "#001EB9" }} >
+                                    <EditIcon />
+                                </IconButton>
+                                <IconButton onClick={() => onFavouriteClick(product)} style={{ color: "#001EB9" }}>{product.isFavourite ? <StarIcon /> : <StarBorderIcon />}</IconButton>
                             </TableCell>
                         </TableRow>
                     ))}
