@@ -5,6 +5,7 @@ export type Product = {
     quantity: number;
     images: Image[];
     description: string;
+    isFavourite: boolean;
 }
 
 export type Image = {

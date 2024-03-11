@@ -30,12 +30,14 @@ export const createProduct = async (product: any) => {
             images.push({
                 isThumbnail: image.isThumbnail,
                 fileName: image.filename,
-                path: image.path.split("/")[1]
+                path: image.path.split("\\")[1]
             });
         });
+        console.log("images ==> ", images);
         product.images = images;
     } else {
         console.error("file upload failed : ", response.status);
+        throw new Error("file upload failed :");
     }
 
     return axios({

@@ -11,7 +11,7 @@ export const Navbar: React.FC = () => {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" sx={{ flexGrow: 1 }} color={"#162427"}>
-                            News
+                            E-Commerce
                         </Typography>
                         <div>
                             <IconButton
