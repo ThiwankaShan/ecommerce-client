@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "./pages/home";
 import { Layout } from "./components/shared/layout";
+import { ProductFormPage } from "./pages/productForm";
 
 
 export const Router = createBrowserRouter([
@@ -9,6 +10,14 @@ export const Router = createBrowserRouter([
         element: (
             <Layout>
                 <Home />
+            </Layout>
+        )
+    },
+    {
+        path: "product/create",
+        element: (
+            <Layout>
+                <ProductFormPage />
             </Layout>
         )
     }

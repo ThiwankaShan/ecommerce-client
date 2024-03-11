@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { ProductTable } from '../components/product/productTable';
 import { getAllProducts } from '../api/productService';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export const Home: React.FC = () => {
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
 
     const getProducts = async () => {
         const products = await getAllProducts();
@@ -18,6 +20,7 @@ export const Home: React.FC = () => {
             <Typography fontSize={36} fontWeight={900}>
                 Products
             </Typography>
+            <Button onClick={() => navigate("product/create")}>New Product</Button>
             <ProductTable products={products} />
         </>
     );

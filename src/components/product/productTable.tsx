@@ -1,5 +1,9 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import React from 'react'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import StarIcon from '@mui/icons-material/Star';
+import { Image } from '@mui/icons-material';
 
 type ProductTableProps = {
     products: any[]
@@ -28,10 +32,26 @@ export const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
                                 <TableCell component="th" scope="row">
                                     {product.sku}
                                 </TableCell>
+                                <TableCell align="right">{
+                                    product.images.length != 0 ?
+                                        (product.images.map((image: any) => {
+                                            return (<img width="60" height="60" style={{ padding: "2px" }} src={`http://localhost:3000/${image.fileName}`} />)
+                                        }))
+                                        :
+                                        "No Images"}</TableCell>
                                 <TableCell align="right">{product.name}</TableCell>
-                                <TableCell align="right">{product.name}</TableCell>
-                                <TableCell align="right">{product.name}</TableCell>
-                                <TableCell align="right">{product.name}</TableCell>
+                                <TableCell align="right">{product.quantity}</TableCell>
+                                <TableCell align="right">
+                                    <IconButton>
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                    <IconButton>
+                                        <StarIcon />
+                                    </IconButton>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

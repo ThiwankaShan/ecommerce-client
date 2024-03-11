@@ -1,8 +1,14 @@
 export type Product = {
-    id: number;
     sku: string;
     name: string;
     price: number;
     quantity: number;
-    image: string;
+    images: Image[];
+    description: string;
+}
+
+export type Image = {
+    isThumbnail: boolean;
+    fileName: string;
+    path: string;
 }
