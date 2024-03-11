@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ProductTable } from '../components/product/productTable';
-import { Navbar } from '../components/shared/navbar';
 import { getAllProducts } from '../api/productService';
+import { Typography } from '@mui/material';
 
 export const Home: React.FC = () => {
     const [products, setProducts] = useState([]);
@@ -15,7 +15,9 @@ export const Home: React.FC = () => {
     }, []);
     return (
         <>
-            <Navbar />
+            <Typography fontSize={36} fontWeight={900}>
+                Products
+            </Typography>
             <ProductTable products={products} />
         </>
     );
