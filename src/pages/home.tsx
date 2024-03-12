@@ -13,6 +13,7 @@ export const Home: React.FC = () => {
     const [favourites, setFavourites] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    let searchValue = ""
 
     const getProducts = async () => {
         const fetchedProducts = await getAllProducts();
@@ -22,9 +23,13 @@ export const Home: React.FC = () => {
         setProducts(filteredProducts);
     };
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value);
+    const handleSearchValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        searchValue = e.target.value;
     };
+
+    const handleSearch = () => {
+        setSearchTerm(searchValue);
+    }
 
     useEffect(() => {
         getProducts();
@@ -37,15 +42,16 @@ export const Home: React.FC = () => {
     return (
         <>
             <Typography fontSize={36} fontWeight={700}>
-                Products
+                {favourites ? "Favourite " : ""}
+                {searchTerm == "" ? "Products" : "Search Results"}
             </Typography>
             <Grid container spacing={2} style={{ marginTop: "30px" }}>
                 <Grid item xs={3}>
-                    <Input placeholder="Search for product" onChange={handleSearch} style={{ width: "100%" }} />
+                    <Input placeholder="Search for product" onChange={handleSearchValueChange} style={{ width: "100%" }} />
                 </Grid>
                 <Grid item xs={2}>
                     <Button
-                        onClick={() => { }}
+                        onClick={handleSearch}
                         style={{ backgroundColor: "#001EB9", color: "white", padding: "10px", width: "100%", borderRadius: "50px" }}
                         variant='contained'
                         startIcon={<SearchIcon />}
@@ -65,7 +71,7 @@ export const Home: React.FC = () => {
             </Grid>
 
             {searchTerm === '' ? (
-                <ProductTable products={products} />
+                <ProductTable products={products} updateProducts={getProducts} />
             ) : (
                 <ProductSearchResults />
             )}

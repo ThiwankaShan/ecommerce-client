@@ -5,14 +5,18 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { Image, Product } from '../../models/product';
+import { updateProduct } from '../../api/productService';
 
 type ProductTableProps = {
     products: Product[];
+    updateProducts: () => Promise<void>;
 };
 
-const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
-    const onFavouriteClick = (product: Product) => {
-        console.log("favourite clicked", product);
+const ProductTable: React.FC<ProductTableProps> = ({ products, updateProducts }) => {
+    const onFavouriteClick = async (product: Product) => {
+        product.isFavourite = !product.isFavourite;
+        await updateProduct(product);
+        updateProducts();
     }
 
     const onEditClick = (product: Product) => {
