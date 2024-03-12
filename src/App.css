@@ -44,6 +44,7 @@
 
 .content-wrapper {
   display: grid;
+  padding: 20px;
 }
 
 .content-container {
@@ -55,4 +56,12 @@
 .tableHead {
   color: #001EB9 !important;
   font-weight: 800 !important;
+}
+
+textarea {
+  background-color: white;
+  color: #162427;
+  font-family: 'Satoshi', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 }

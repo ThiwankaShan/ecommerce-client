@@ -11,8 +11,13 @@ export const getAllProducts = () => {
 }
 
 export const createProduct = async (product: any) => {
-    const images = await uploadImages(product.images);
-    product.images = images;
+    try {
+        const images = await uploadImages(product.images);
+        product.images = images;
+
+    } catch {
+        return null;
+    }
 
     return axios({
         method: 'post',
@@ -20,6 +25,8 @@ export const createProduct = async (product: any) => {
         data: product
     }).then((response) => {
         return response.data;
+    }).catch(() => {
+        return null;
     });
 }
 

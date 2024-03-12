@@ -4,9 +4,13 @@ import { Typography } from '@mui/material'
 
 export const ProductFormPage: React.FC = () => {
     return (
-        <div>
-            <Typography>Add New Product</Typography>
-            <ProductForm />
-        </div>
+        <>
+            <Typography fontSize={36} fontWeight={700}>
+                Add New Product
+            </Typography>
+            <div className='content-wrapper' style={{ marginTop: "30px" }}>
+                <ProductForm />
+            </div>
+        </>
     )
 }
